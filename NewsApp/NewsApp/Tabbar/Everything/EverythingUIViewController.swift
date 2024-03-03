@@ -29,7 +29,7 @@ class EverythingUIViewController: UIViewController {
     }
     
     @IBAction func goToSettings(_ sender: UIButton) {
-        performSegue(withIdentifier: "settings", sender: self)
+        performSegue(withIdentifier: "showSettingsViewController", sender: self)
     }
     
     @objc private func fetchEverything() {
