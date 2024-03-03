@@ -74,7 +74,7 @@ class TopHeadlinesViewController: UIViewController {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
-                print("Error")
+                print("Error", error)
             }
         }
     }
@@ -91,6 +91,7 @@ extension TopHeadlinesViewController: UISearchBarDelegate {
             return
         }
         APIManager.qTopHeadlines = "&q=\(text)"
+        searchBar.resignFirstResponder()
         fetchTopHeadlines()
     }
 }

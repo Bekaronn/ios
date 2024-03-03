@@ -50,7 +50,7 @@ class EverythingUIViewController: UIViewController {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
-                print("Error")
+                print("Error", error)
             }
         }
     }
@@ -63,6 +63,7 @@ extension EverythingUIViewController: UISearchBarDelegate {
             return
         }
         APIManager.qEverything = "&q=\(text)"
+        searchBar.resignFirstResponder()
         fetchEverything()
     }
 }

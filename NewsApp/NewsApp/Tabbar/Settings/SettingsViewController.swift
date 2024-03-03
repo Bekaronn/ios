@@ -23,7 +23,10 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        selectCategoryButton.setTitle(APIManager.category, for: .normal)
+        selectPageSizeButton.setTitle(APIManager.pageSize, for: .normal)
+        selectSortByButton.setTitle(APIManager.sortBy, for: .normal)
+        selectCountryButton.setTitle(APIManager.country.uppercased(), for: .normal)
         // Do any additional setup after loading the view.
     }
     
@@ -43,14 +46,17 @@ class SettingsViewController: UIViewController {
     @IBAction func categoryButtonAction(_ sender: UIButton){
         showCategoryButtonVisibility()
         switch sender.currentTitle {
-        case "Business":
-            APIManager.category = "&category=business"
+        case "business":
+            APIManager.category = "business"
+            selectCategoryButton.setTitle("business", for: .normal)
             print("Business")
-        case "Science":
-            APIManager.category = "&category=science"
+        case "science":
+            APIManager.category = "science"
+            selectCategoryButton.setTitle("science", for: .normal)
             print("Science")
-        case "Sports":
-            APIManager.category = "&category=sports"
+        case "sports":
+            APIManager.category = "sports"
+            selectCategoryButton.setTitle("sports", for: .normal)
             print("Sports")
         default:
             print("no")
@@ -75,13 +81,16 @@ class SettingsViewController: UIViewController {
         switch sender.currentTitle {
         case "US":
             print("us")
-            APIManager.country = "&country=us"
+            APIManager.country = "us"
+            selectCountryButton.setTitle("US", for: .normal)
         case "FR":
             print("fr")
-            APIManager.country = "&country=fr"
+            APIManager.country = "fr"
+            selectCountryButton.setTitle("FR", for: .normal)
         case "RU":
             print("ru")
-            APIManager.country = "&country=ru"
+            APIManager.country = "ru"
+            selectCountryButton.setTitle("RU", for: .normal)
         default:
             print("no")
         }
@@ -104,13 +113,16 @@ class SettingsViewController: UIViewController {
         showPageSizeButtonVisibility()
         switch sender.currentTitle {
         case "15":
-            APIManager.pageSize = "&pageSize=15"
+            APIManager.pageSize = "15"
+            selectPageSizeButton.setTitle("15", for: .normal)
             print("15")
         case "30":
-            APIManager.pageSize = "&pageSize=30"
+            APIManager.pageSize = "30"
+            selectPageSizeButton.setTitle("30", for: .normal)
             print("30")
         case "100":
-            APIManager.pageSize = "&pageSize=100"
+            APIManager.pageSize = "100"
+            selectPageSizeButton.setTitle("100", for: .normal)
             print("100")
         default:
             print("no")
@@ -134,13 +146,16 @@ class SettingsViewController: UIViewController {
         showSortByButtonVisibility()
         switch sender.currentTitle {
         case "publishedAt":
-            APIManager.sortBy = "&sortBy=publishedAt"
+            APIManager.sortBy = "publishedAt"
+            selectSortByButton.setTitle("publishedAt", for: .normal)
             print("publishedAt")
         case "relevancy":
-            APIManager.sortBy = "&sortBy=relevancy"
+            APIManager.sortBy = "relevancy"
+            selectSortByButton.setTitle("relevancy", for: .normal)
             print("relevancy")
         case "popularity":
-            APIManager.sortBy = "&sortBy=popularity"
+            APIManager.sortBy = "popularity"
+            selectSortByButton.setTitle("popularity", for: .normal)
             print("popularity")
         default:
             print("no")

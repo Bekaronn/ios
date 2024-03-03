@@ -33,20 +33,19 @@ class APIManager {
     private let apiKey = "e65ee0938a2a43ebb15923b48faed18d"
     
     //TopHeadliens
-    static var country = "&country=us"
-    static var category = "&category=business"
+    static var country = "us"
+    static var category = "business"
     
     //Everything
-    static var language = "&language=en"
-    static var sortBy = "&sortBy=publishedAt"
+    static var sortBy = "publishedAt"
     
     //PageSize&Page
-    static var pageSize = "&pageSize=15"
-    static var page = "&page=1"
+    static var pageSize = "15"
+    static var page = "1"
     
     
     func getTopHeadlines(completion: @escaping (Result<[Article], Error>) -> Void){
-        let urlString = "https://newsapi.org/v2/top-headlines?apiKey=\(apiKey)\(APIManager.country)\(APIManager.category)\(APIManager.pageSize)\(APIManager.page)\(APIManager.qTopHeadlines)"
+        let urlString = "https://newsapi.org/v2/top-headlines?apiKey=\(apiKey)&country=\(APIManager.country)&category=\(APIManager.category)&pageSize=\(APIManager.pageSize)&page=\(APIManager.page)\(APIManager.qTopHeadlines)"
         
         guard let url = URL(string: urlString) else {
             return
@@ -72,7 +71,7 @@ class APIManager {
     
     
     func getEverything(completion: @escaping (Result<[Article], Error>) -> Void){
-        let urlString = "https://newsapi.org/v2/everything?apiKey=\(apiKey)\(APIManager.language)\(APIManager.sortBy)\(APIManager.qEverything)\(APIManager.pageSize)\(APIManager.page)"
+        let urlString = "https://newsapi.org/v2/everything?apiKey=\(apiKey)&sortBy=\(APIManager.sortBy)\(APIManager.qEverything)&pageSize=\(APIManager.pageSize)&page=\(APIManager.page)"
         
         guard let url = URL(string: urlString) else {
             return
