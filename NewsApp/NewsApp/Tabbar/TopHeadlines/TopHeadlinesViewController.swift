@@ -12,7 +12,7 @@ class TopHeadlinesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var stopButton: UIButton!
-    
+    @IBOutlet weak var settingsButton: UIButton!
     
     private var articles: [TopHeadlinesTableViewCellViewModel] = []
     private var count_refresh = 0
@@ -49,6 +49,10 @@ class TopHeadlinesViewController: UIViewController {
         isTimerRunning.toggle()
     }
     
+    @IBAction func goToSettings(_ sender: UIButton) {
+        performSegue(withIdentifier: "showSettingsViewController", sender: self)
+    }
+    
     @objc private func fetchTopHeadlines() {
         APIManager.shared.getTopHeadlines { [weak self] result in
             switch result {
@@ -82,9 +86,13 @@ class TopHeadlinesViewController: UIViewController {
 }
 
 extension TopHeadlinesViewController: UISearchBarDelegate {
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        <#code#>
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, !text.isEmpty else {
+            return
+        }
+        APIManager.qTopHeadlines = "&q=\(text)"
+        fetchTopHeadlines()
+    }
 }
 
 extension TopHeadlinesViewController: UITableViewDelegate, UITableViewDataSource {

@@ -1,14 +1,36 @@
 //
-//  EverythingTableViewCell.swift
+//  TopHeadlinesTableViewCell.swift
 //  NewsApp
 //
-//  Created by Bekarys on 03.03.2024.
+//  Created by Bekarys on 02.03.2024.
 //
 
 import UIKit
 
-class EverythingTableViewCell: UITableViewCell {
+class EverythingTableViewCellViewModel {
+    let title: String
+    let description: String
+    let imageURL: URL?
+    var imageData: Data?
+    
+    init(
+        title: String,
+        description: String,
+        imageURL: URL?
+    ) {
+        self.title = title
+        self.description = description
+        self.imageURL = imageURL
+    }
+}
 
+class EverythingTableViewCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var newsImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

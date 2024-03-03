@@ -8,7 +8,19 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    //TopHeadliens
+    private var country = "&country=us"
+    private var category = "&category=business"
+    
+    //Everything
+    private var language = "&language=en"
+    private var sortBy = "&sortBy=publishedAt"
+    
+    //PageSize&Page
+    private var pageSize = "&pageSize=15"
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
