@@ -20,6 +20,8 @@
 		E736A0382B93C144008286FA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736A0372B93C144008286FA /* SettingsViewController.swift */; };
 		E736A03A2B93C14F008286FA /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736A0392B93C14F008286FA /* BookmarksViewController.swift */; };
 		E736A03C2B93C16C008286FA /* EverythingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736A03B2B93C16C008286FA /* EverythingTableViewCell.swift */; };
+		E736A0402B9771CD008286FA /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736A03F2B9771CD008286FA /* BookmarkManager.swift */; };
+		E736A0422B977553008286FA /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E736A0412B977553008286FA /* BookmarksTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E736A0372B93C144008286FA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E736A0392B93C14F008286FA /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		E736A03B2B93C16C008286FA /* EverythingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingTableViewCell.swift; sourceTree = "<group>"; };
+		E736A03F2B9771CD008286FA /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
+		E736A0412B977553008286FA /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E736A0252B938A5A008286FA /* APIManager.swift */,
+				E736A03F2B9771CD008286FA /* BookmarkManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E736A0392B93C14F008286FA /* BookmarksViewController.swift */,
+				E736A0412B977553008286FA /* BookmarksTableViewCell.swift */,
 			);
 			path = Bookmarks;
 			sourceTree = "<group>";
@@ -230,9 +236,11 @@
 				E736A03C2B93C16C008286FA /* EverythingTableViewCell.swift in Sources */,
 				E736A00B2B938089008286FA /* AppDelegate.swift in Sources */,
 				E736A0312B939092008286FA /* TopHeadlinesTableViewCell.swift in Sources */,
+				E736A0402B9771CD008286FA /* BookmarkManager.swift in Sources */,
 				E736A00D2B938089008286FA /* SceneDelegate.swift in Sources */,
 				E736A0362B93C12F008286FA /* EverythingUIViewController.swift in Sources */,
 				E736A0382B93C144008286FA /* SettingsViewController.swift in Sources */,
+				E736A0422B977553008286FA /* BookmarksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

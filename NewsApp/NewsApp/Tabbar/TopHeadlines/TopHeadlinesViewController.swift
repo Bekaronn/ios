@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class TopHeadlinesViewController: UIViewController {
     
@@ -14,7 +15,7 @@ class TopHeadlinesViewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
-    private var articles: [TopHeadlinesTableViewCellViewModel] = []
+    private var articles: [ArticleViewModel] = []
     private var count_refresh = 0
     private var timer: Timer?
     private var isTimerRunning = true
@@ -63,10 +64,11 @@ class TopHeadlinesViewController: UIViewController {
                 print("\(count) is refresh")
                 
                 self?.articles = articles.compactMap({
-                    TopHeadlinesTableViewCellViewModel(
+                    ArticleViewModel(
                         title: $0.title,
                         description: $0.description ?? "No Description",
-                        imageURL: URL(string: $0.urlToImage ?? "https://thumbs.dreamstime.com/b/news-woodn-dice-depicting-letters-bundle-small-newspapers-leaning-left-dice-34802664.jpg")
+                        imageURL: URL(string: $0.urlToImage ?? "https://thumbs.dreamstime.com/b/news-woodn-dice-depicting-letters-bundle-small-newspapers-leaning-left-dice-34802664.jpg"),
+                        url: URL(string: $0.url ?? "https://www.apple.com/")
                     )
                 })
                 
@@ -123,7 +125,52 @@ extension TopHeadlinesViewController: UITableViewDelegate, UITableViewDataSource
             }.resume()
         }
         
+        cell.shareButton.addTarget(self, action: #selector(shareButtonTapped(_:)), for: .touchUpInside)
+        cell.bookmarkButton.addTarget(self, action: #selector(bookmarkButtonTapped(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let article = articles[indexPath.row]
+        if let url = article.url {
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
+        } else {
+            print("URL для данной новости отсутствует")
+        }
+    }
+    
+    @objc func bookmarkButtonTapped(_ sender: UIButton) {
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else {
+            return
+        }
+        print(indexPath, " index path!!")
+        
+        let article = articles[indexPath.row]
+        
+        if BookmarkManager.contains(article) {
+            if let index = BookmarkManager.bookmarks.firstIndex(of: article) {
+                BookmarkManager.bookmarks.remove(at: index)
+            }
+        } else {
+            BookmarkManager.bookmarks.append(article)
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    @objc func shareButtonTapped(_ sender: UIButton) {
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else {
+            return
+        }
+        print(indexPath, " index path!!")
+        let article = articles[indexPath.row]
+        
+        let activityViewController = UIActivityViewController(activityItems: [article.url ?? "https://www.apple.com/"], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
 }

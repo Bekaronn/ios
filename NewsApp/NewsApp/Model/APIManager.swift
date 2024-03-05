@@ -30,7 +30,7 @@ class APIManager {
     static var qTopHeadlines = ""
     static var qEverything = "&q=bitcoin"
     
-    private let apiKey = "e65ee0938a2a43ebb15923b48faed18d"
+    private let apiKey = "edc11ddb80fa4abfafaae9cbda768b9b"
     
     //TopHeadliens
     static var country = "us"
